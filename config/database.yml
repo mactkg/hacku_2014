@@ -1,0 +1,6 @@
+development:
+    adapter: "mysql2"
+    host: "localhost"
+    user: "hacku"
+    password: "hacku2014"
+    database: "hacku2014"
