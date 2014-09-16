@@ -1,8 +1,4 @@
-require 'rubygems'
-require 'sinatra/base'
-class HelloApp < Sinatra::Base
-  get '/hello' do
-    'Good Sunday Morning!'
-  end
-end
-run HelloApp
+root = ::File.dirname(__FILE__)
+require ::File.join(root, 'app')
+
+run Joogle
