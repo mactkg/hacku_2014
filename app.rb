@@ -2,7 +2,9 @@ require 'sinatra/base'
 require 'sinatra/json'
 require_relative 'model'
 require 'pp'
+
 class Joogle < Sinatra::Base
+    enable :cross_origin
     get '/' do
         "Welcome to joogle!"
     end
@@ -43,7 +45,8 @@ class Joogle < Sinatra::Base
                 }
             ],
         }
-       json res
+        cross_origin
+        json res
     end
 
     get '/api/jdoc' do
