@@ -4,7 +4,6 @@ require_relative 'model'
 require 'pp'
 
 class Joogle < Sinatra::Base
-    enable :cross_origin
     get '/' do
         "Welcome to joogle!"
     end
@@ -45,7 +44,7 @@ class Joogle < Sinatra::Base
                 }
             ],
         }
-        cross_origin
+        headers "Access-Control-Allow-Origin" => "*"
         json res
     end
 
