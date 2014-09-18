@@ -31,11 +31,11 @@ class Joogle < Sinatra::Base
                             type: "int",
                         }
                     ],
-                    return: "float",
+                    out: "float",
                     javadoc_name: "Processing",
                     reference: "http://processing.org/reference/javadoc/core/processing/core/PGraphics.html%23brightness(int)",
                     description: "( begin auto-generated from brightness.xml ) Extracts the brightness value from a color. ( end auto-generated )",
-                    class: {
+                    blong_to: {
                         package: "processing.core",
                         name: "processing.core.PGraphics",
                         simple_name: "PGraphics",
