@@ -4,7 +4,7 @@ Sequel.migration do
         create_table(:method, :ignore_index_errors=>true) do
             primary_key :id, :type=>Bignum
             String :name, :size=>256
-            foreign_key :javadoc_id, :javadoc, :type=>Bignum, :null=>false, :key=>[:id]
+            foreign_key :javadoc_id, :javadoc, :type=>Bignum, :key=>[:id]
             String :belong_to, :size=>256
             String :params, :size=>256, :null=>false
             String :out, :size=>128, :null=>false
