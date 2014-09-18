@@ -1,7 +1,7 @@
 require 'sequel'
 
 module Joogle
-    class Javadoc < Sequel::Model(:javadoc)
+    class ParsingQueue < Sequel::Model(:parsing_queue)
         plugin :json_serializer
     end
 end

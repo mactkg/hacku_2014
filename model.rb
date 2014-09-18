@@ -5,3 +5,4 @@ DB = Sequel.connect(:adapter=>'mysql2', :host=>'localhost', :database=>'hacku201
 
 require_relative 'model/javadoc'
 require_relative 'model/method'
+require_relative 'model/parsing_queue'
