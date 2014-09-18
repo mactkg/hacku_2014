@@ -2,6 +2,7 @@
 source "https://rubygems.org"
 
 gem "unicorn"
+gem "thin"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "sequel"
