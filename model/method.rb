@@ -11,7 +11,7 @@ module Joogle
             params_json = [];
             params.split(',').each do |param|
                 vk = param.split(' ')
-                params_json << {vk[1] => vk[0]}
+                params_json << {type: vk[0], name: vk[1]}
             end
             {
                 name: name,
