@@ -14,7 +14,7 @@ Sequel.migration do
 
             index [:javadoc_id], :name=>:method_javadoc
             index [:params], :name=>:params
-            index [:blong_to], :name=>:belong_to
+            index [:belong_to], :name=>:belong_to
             index [:out], :name=>:out
         end
     end
