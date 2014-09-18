@@ -7,3 +7,4 @@ gem "sinatra-contrib"
 gem "sequel"
 gem "mysql2"
 gem "pry"
+gem "javadoc", :path => '../javadoc'
