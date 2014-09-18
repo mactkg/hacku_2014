@@ -5,10 +5,9 @@ require 'pp'
 
 module Joogle
     class App < Sinatra::Base
-        get '/' do
+       get '/' do
             "Welcome to joogle!"
         end
-
 
         ### API
         get '/api/test' do
@@ -55,7 +54,58 @@ module Joogle
         end
 
         get '/api/search' do
-            params.to_json
+            halt 400 if params['query'].nil?
+            q = parse_query params['query']
+            if(q[:out].nil?)
+                q[:out] = "void"
+            end
+
+            method = Joogle::Method
+            method = method.where(Sequel.ilike(:belong_to, "%.#{q[:type]}")) if q[:type]
+            method = method.where(Sequel.ilike(:out, /(#{query_alias(q[:out])})/))
+            if !q[:params].empty?
+                q[:params].map! do |param|
+                    query_alias(param)
+                end
+                query = "^" + q[:params].map { |param| "(#{param}) [a-zA-Z]+" }.join(", ") + "$"
+                method = method.where(Sequel.ilike(:params, /#{query}/))
+            end
+
+            data = {}
+            data['methods'] = []
+            method.all.each do |m|
+                data['methods'] << m.to_hash
+            end
+
+            json data
+        end
+
+        helpers do
+            def query_alias(query)
+                if query.downcase == "number"
+                    "int|float|long|double|short"
+                elsif query.downcase == "number[]"
+                    "(int|float|long|double|short)\\[\\]"
+                elsif query.downcase == "primitive"
+                    "int|float|long|double|short|char|boolean|byte"
+                elsif query.downcase == "primitive[]"
+                    "(int|float|long|double|short|char|boolean|byte)\\[\\]"
+                else
+                    query
+                end
+            end
+            
+            def parse_query(text)
+                if res = text.match(/\s*(?:(?<type>(?:\w|\[|\]|<|>|\.)+)\s*:)?(?<params>(?:\s*(?:\w|\[|\]|<|>|\.)+)*)\s*(?:->\s*(?<out>(?:\w|\[|\]|<|>|\.)+))?\s*/)
+                    query = {}
+                    query[:type] = res[:type]
+                    query[:params] = res[:params].gsub(/\s+/, ' ').split
+                    query[:out] = res[:out]
+                    return query
+                end
+
+                return nil
+            end
         end
     end
 end
