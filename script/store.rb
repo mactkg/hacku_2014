@@ -32,4 +32,4 @@ parser.classes.each do |c|
     end
 end
 
-pending.status = "processed"
+pending.update(:status => "finished")
