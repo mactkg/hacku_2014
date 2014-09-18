@@ -5,8 +5,8 @@ require 'pp'
 
 module Joogle
     class App < Sinatra::Base
-       get '/' do
-            "Welcome to joogle!"
+        get '/' do
+            html :index
         end
 
         ### API
@@ -50,7 +50,8 @@ module Joogle
 
         get '/api/jdoc' do
             jdoc = Javadoc.all
-            jdoc.to_json
+            headers "Access-Control-Allow-Origin" => "*"
+            json jdoc
         end
 
         get '/api/search' do
@@ -94,7 +95,11 @@ module Joogle
                     query
                 end
             end
-            
+
+            def html(view)
+                File.read(File.join('public', "#{view.to_s}.html"))
+            end
+
             def parse_query(text)
                 if res = text.match(/\s*(?:(?<type>(?:\w|\[|\]|<|>|\.)+)\s*:)?(?<params>(?:\s*(?:\w|\[|\]|<|>|\.)+)*)\s*(?:->\s*(?<out>(?:\w|\[|\]|<|>|\.)+))?\s*/)
                     query = {}
