@@ -1,6 +1,8 @@
 require 'sequel'
 
 #Sequel::Model.plugin(:schema)
-class Mehtod < Sequel::Model(:method)
-
+module Joogle
+    class Mehtod < Sequel::Model(:method)
+        plugin :json_serializer
+    end
 end
