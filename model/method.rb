@@ -6,6 +6,7 @@ require_relative 'javadoc'
 module Joogle
     class Method < Sequel::Model(:method)
         #plugin :json_serializer
+        plugin :force_encoding, 'UTF-8'
         many_to_one :javadoc, :class => "Joogle::Javadoc"
         def to_hash
             params_json = [];

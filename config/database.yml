@@ -4,3 +4,4 @@ development:
     user: "hacku"
     password: "hacku2014"
     database: "hacku2014"
+    encoding: "utf8"
