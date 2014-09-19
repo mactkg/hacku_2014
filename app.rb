@@ -63,7 +63,7 @@ module Joogle
 
             method = Joogle::Method
             method = method.where(Sequel.ilike(:belong_to, "%.#{q[:type]}")) if q[:type]
-            method = method.where(Sequel.ilike(:out, /(#{query_alias(q[:out])})/))
+            method = method.where(Sequel.ilike(:out, /(#{query_alias(q[:out])})$/))
             if !q[:params].empty?
                 q[:params].map! do |param|
                     query_alias(param)
