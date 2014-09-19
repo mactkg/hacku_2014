@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'sequel'
 require 'javadoc'
 require_relative '../model.rb'
@@ -12,12 +13,13 @@ parser.parse
 puts "Done parsing"
 
 name = parser.classes.first.package.name.split(".").first
-javadoc = Joogle::Javadoc.create(:name => name, :simple_name => name, :url => pending.url)
+javadoc = Joogle::Javadoc.find_or_create(:name => name, :simple_name => name, :url => pending.url)
 
 puts "Inserting!"
 
 parser.classes.each do |c|
     c.methods.each do |m|
+        next if m.name == "if" # error handling
         params = m.params.map! { |p| p.join(" ") }.join(', ')
         method = Joogle::Method.create(
             :name => m.name,
