@@ -227,6 +227,10 @@ a:focus {
     width: 50%;
 }
 
+.clear_both {
+    clear: both;
+}
+
 .hidden_item > .right_item > pre code {
     border-radius: 4px;
 }
