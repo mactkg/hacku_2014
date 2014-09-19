@@ -6,7 +6,6 @@ onLoad = function () {
     $.get('/api/jdoc', function (jdocs) {
         console.log(jdocs);
         jdocs.forEach(function(jdoc) {
-            console.log('<option value=' + jdoc.url + '>' + jdoc.name + '</option>');
             $package_selector.append('<option value=\"' + jdoc.url + '\">' + jdoc.name + '</option>');
         });
     });
@@ -57,6 +56,9 @@ joogleSearch = function () {
                 $method = $(method_template(method));
             }
             $accordion.append($method);
+        });
+        data.packages.forEach(function (pack){
+            $packages.append(package_template(pack));
         });
         
         $accordion.accordion({collapsible: true, heightStyle: "content" });

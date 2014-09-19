@@ -74,8 +74,12 @@ module Joogle
 
             data = {}
             data['methods'] = []
+            data['packages'] = []
             method.all.each do |m|
                 data['methods'] << m.to_hash
+                if(!data['packages'].include? m.javadoc.to_hash)
+                    data['packages'] << m.javadoc.to_hash
+                end
             end
 
             json data

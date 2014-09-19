@@ -34,20 +34,33 @@
     </div>
     <div class='usage'>
       <p><b>Welcome to Joogle</b><br />
-        Joogle is a JavaDoc search engine, which allows you to search many Java libraries by approximate type signature. It is inspired by <a href='http://www.haskell.org/hoogle/'>Hoogle</a>.</br>
-      </p>
-      <br /><br />
-      <div class='example'>
-        <div class='title'>
-          Example search:</br>
+        <div class="item">
+          Joogle is a JavaDoc search engine, which allows you to search many Java libraries by approximate type signature. It is inspired by <a href='http://www.haskell.org/hoogle/'>Hoogle</a>.</br>
         </div>
-        <br />
-        <a href="">PApplet:</a>
-        <br />
-        <a href="">String:int->char</a>
-        <br /><br />
-        Enter your own search at the top of the page!!
-      </div>
+      </p>
+      <br />
+      <p><b>Syntax</b><br />
+        <div class="item">
+          <pre>
+Object:parameter parameter...->return
+
+//Example:
+PApplet:int int->void // => void *.PApplet.something(int p1, int p2)
+int int->void         // => void *.something(int p1, int p2)
+->void                // => void *.something(*)
+int int               // => * *.something(int p1, int p2)
+          </pre>
+        </div>
+      </p>
+      <p><b>Example search:</b><br />
+        <div class="item">
+          <ul>
+            <li><a href='javascript:void(0)' onclick='$(".search_box").val("PApplet:Number->int"); joogleSearch(); return false;'>PApplet:Number->int</a></li>
+            <li><a href='javascript:void(0)' onclick='$(".search_box").val("User:->Date"); joogleSearch(); return false;'>User:->Date</a></li>
+          </ul>
+          Enter your own search at the top of the page!!
+        </div>
+      </p>
     </div>
   </body>
   <script id='result_template' type='text/template'>
@@ -120,6 +133,6 @@
     </div>
   </script>
   <script id='package_template' type='text/template'>
-    <a href='"' + <%= reference%> + '"'><%= name%></a><br />
+    <a href='#<%= name%>'><%= name%></a><br />
   </script>
 </html>
