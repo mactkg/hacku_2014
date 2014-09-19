@@ -27,6 +27,7 @@ module Joogle
                     simple_name: simple_name,
                     type: type,
                 },
+                sample_code: sample_code,
             }
         end
 
