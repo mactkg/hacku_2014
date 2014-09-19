@@ -6,7 +6,8 @@ onLoad = function () {
     $.get('/api/jdoc', function (jdocs) {
         console.log(jdocs);
         jdocs.forEach(function(jdoc) {
-            $package_selector.append('<option value=' + jdoc.url + '>' + jdoc.simple_name + '</option>');
+            console.log('<option value=' + jdoc.url + '>' + jdoc.name + '</option>');
+            $package_selector.append('<option value=\"' + jdoc.url + '\">' + jdoc.name + '</option>');
         });
     });
 
@@ -47,10 +48,9 @@ joogleSearch = function () {
     pack = $('.search_package').val();
 
     $.get('/api/search?query=' + query, function (data){
-        /*data.packages.forEach(function (pack){
-            $packages.append(package_template(pack));
-        });*/
+        package = [];
         data.methods.forEach(function (method){
+            method.param = _.map(method.params, function(p) { return p.type + " " + p.name }).join(", ");
             if (method.sample_code !== null) {
                 $method = $(method_template_sample(method));
             } else {

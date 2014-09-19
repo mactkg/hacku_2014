@@ -22,7 +22,7 @@
   <body onLoad='onLoad()'>
     <div class='header'>
       <h1 class='logo'>
-        JOOGLE
+        <a href="/">JOOGLE</a>
       </h1>
       <div class='search_content'>
         <div class='search'>
@@ -42,7 +42,7 @@
           Example search:</br>
         </div>
         <br />
-        <a href="">Date</a>
+        <a href="">PApplet:</a>
         <br />
         <a href="">String:int->char</a>
         <br /><br />
@@ -68,34 +68,53 @@
   </script>
   <script id='method_template' type='text/template'>
     <div class='summary'>
-      <p><small><b>[<%= belong_to.type %>]</b> <%= belong_to.name %></small><br />
-        (<b><%= out %></b>) <%= name %> (
-        <% _.each(params, function (p) { %>
-          <b><%= p.type %></b> <%= p.name %>
-        <% }) %>
-      ) </p>
+      <p><small>[<%= belong_to.type %>] <%= belong_to.name %></small><br />
+        (<%= out %>) <b><%= name %></b> (<%= param %>)</p>
     </div>
     <div class='hidden_item'>
-      <p>Reference: <a href=<%= reference %>><%= reference %></a></p>
-      <p>Description: <br /><%= description %></p>
+      <div class='reference'>
+        <p><b>Reference:</b><p>
+        <div class='item'>
+          <a href=<%= reference %>><%= reference %></a></p>
+        </div>
+      </div>
+      <div class='description'>
+        <p><b>Description:</b></p>
+        <div class='item'>
+          <% if(description != "") { %>
+            <p><%= description %></p>
+          <% } else { %>
+            <p>none.</p>
+          <% } %>
+        </div>
+      </div>
     </div>
   </script>
   <script id='method_template_sample' type='text/template'>
     <div class='summary'>
       <p><small><b>[<%= belong_to.type %>]</b> <%= belong_to.name %></small><br />
-        (<b><%= out %></b>) <%= name %> (
-        <% _.each(params, function (p) { %>
-          <b><%= p.type %></b> <%= p.name %>
-        <% }) %>
-      ) </p>
+        (<%= out %>) <b><%= name %></b> (<%= param %>)</p>
     </div>
     <div class='hidden_item'>
       <div class='left_item'>
-        <p>Reference: <a href='"' + <%= reference %>  + '"'><%= reference %></a></p>
-        <p>Description: <br /><%= description %></p>
+        <div class='reference'>
+          <p><b>Reference:</b><p>
+          <div class='item'>
+            <a href=<%= reference %>><%= reference %></a></p>
+          </div>
+        </div>
+        <div class='description'>
+          <div class='item'>
+            <% if(description != "") { %>
+              <p><%= description %></p>
+            <% } else { %>
+              <p>none.</p>
+            <% } %>
+          </div>
+        </div>
       </div>
       <div class='right_item'>
-        <p>Sample Code: </p>
+        <p><b>Sample Code:</b> </p>
         <pre><code class="java"><%= sample_code %></code></pre>
       </div>
     </div>

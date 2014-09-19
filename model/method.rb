@@ -22,7 +22,7 @@ module Joogle
                 reference: URI.unescape(permalink),
                 description: description,
                 belong_to: {
-                    name: belong_to,
+                    name: package_name,
                     package: package,
                     simple_name: simple_name,
                     type: type,
@@ -32,11 +32,15 @@ module Joogle
         end
 
         def package
-            return belong_to.split(' ')[1].split('.').select{|s| s =~ /^[a-z]/}.join('.')
+            return package_name.split('.').select{|s| s =~ /^[a-z]/}.join('.')
         end
 
         def simple_name
-            return belong_to.split(' ')[1].split(',').last
+            return package_name.split('.').last
+        end
+
+        def package_name
+            return belong_to.split(' ')[1]
         end
 
         def type
