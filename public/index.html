@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     
-    <link rel="stylesheet"href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/styles/monokai.min.css'>
+    <link rel="stylesheet"href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/styles/tomorrow.min.css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="normalize.css">
@@ -82,10 +82,10 @@
   </script>
   <script id='method_template_sample' type='text/template'>
     <div class='summary'>
-      <p><small><b>[ <%= belong_to.type %> ]</b> <%= belong_to.name %></small><br />
-        ( <%= out %> ) <%= name %> (
+      <p><small><b>[<%= belong_to.type %>]</b> <%= belong_to.name %></small><br />
+        (<b><%= out %></b>) <%= name %> (
         <% _.each(params, function (p) { %>
-          <%= p.type %> <%= p.name %>
+          <b><%= p.type %></b> <%= p.name %>
         <% }) %>
       ) </p>
     </div>
@@ -96,7 +96,7 @@
       </div>
       <div class='right_item'>
         <p>Sample Code: </p>
-        <pre><code class="java"></code><%= sample_code %></pre>
+        <pre><code class="java"><%= sample_code %></code></pre>
       </div>
     </div>
   </script>

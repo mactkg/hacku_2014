@@ -32,6 +32,10 @@ select {
     border-radius: 0;
 }
 
+p {
+    margin: 0px auto;
+}
+
 a {
     color: rgb(229, 24, 35);
     text-decoration: none;
@@ -71,14 +75,12 @@ a:focus {
 }
 
 .header > .search_content {
-    float: inherit;
-    width: 100%;
+    float: left;
 }
 
 .header > .search_content > .search {
     float: left;
-    margin-left: 10px;
-    width: auto;
+    width: 600px;
 }
 
 .header > .search_content > .search > .search_package {
@@ -99,7 +101,7 @@ a:focus {
 
 .header > .search_content > .search > .search_box {
     margin-top: 13px;
-    min-width: 40%;
+    min-width: 50%;
     min-height: 32px;
     border: solid 1px #aaa;
 }
@@ -118,10 +120,11 @@ a:focus {
     color: white;
     text-align: center;
     margin-top: 13px;
-    min-width: 52px;
+    min-width: 10%;
     min-height: 34px;
     border: none;
     overflow: visible;
+    float: right;
 }
 
 .header > .search_content > .search > .search_button:hover {

@@ -51,11 +51,15 @@ joogleSearch = function () {
             $packages.append(package_template(pack));
         });*/
         data.methods.forEach(function (method){
-            $method = $(method_template(method));
+            if (method.sample_code !== null) {
+                $method = $(method_template_sample(method));
+            } else {
+                $method = $(method_template(method));
+            }
             $accordion.append($method);
         });
         
-        $accordion.accordion({collapsible: true});
+        $accordion.accordion({collapsible: true, heightStyle: "content" });
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
